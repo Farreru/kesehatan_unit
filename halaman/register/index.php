@@ -21,7 +21,7 @@
                     <img src="../../assets/gambar/logo.png" class="img-fluid mx-auto " width="80px" alt=""><span class="text-center text-muted"><b>Kesehatan Unit</b></span>
                 </div>
                 <h5 class="card-title mb-3">Register</h5>
-                <form action="" method="POST">
+                <form action="proses.php" method="POST">
                     <div class="form-group">
                         <label for="">Username</label>
                         <input type="text" name="" class="form-control mb-3" id="" required>
