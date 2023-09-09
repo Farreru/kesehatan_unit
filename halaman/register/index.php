@@ -32,8 +32,10 @@
                     </div>
                     <div class="form-group">
                         <label for="">Role</label>
-                        <select class="form-select mb-3" name="" id="">
+                        <select class="form-select mb-3" name="" id="" required>
                             <option value="" selected disabled>Pilih Role</option>
+                            <option value="admin">Admin</option>
+                            <option value="pegawai">Pegawai</option>
                         </select>
                     </div>
                     <div class="form-group">
