@@ -20,7 +20,7 @@
                 <div class="d-grid mb-3">
                     <img src="../../assets/gambar/logo.png" class="img-fluid mx-auto " width="80px" alt=""><span class="text-center text-muted"><b>Kesehatan Unit</b></span>
                 </div>
-                <h5 class="card-title mb-3">Regitser</h5>
+                <h5 class="card-title mb-3">Register</h5>
                 <form action="" method="POST">
                     <div class="form-group">
                         <label for="">Username</label>
@@ -37,7 +37,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <input type="submit" class="btn btn-primary" name="login" value="Login">
+                        <input type="submit" class="btn btn-primary" name="register" value="Register">
                     </div>
                 </form>
             </div>
