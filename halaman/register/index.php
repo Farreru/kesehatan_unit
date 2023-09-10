@@ -15,7 +15,7 @@
 <body>
 
     <div class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
-        <div class="card" style="width: 25rem;">
+        <div class="card col-sm-4">
             <div class="card-body border-top border-primary">
                 <div class="d-grid mb-3">
                     <img src="../../assets/gambar/logo.png" class="img-fluid mx-auto " width="80px" alt=""><span class="text-center text-muted"><b>Kesehatan Unit</b></span>
@@ -24,15 +24,15 @@
                 <form action="proses.php" method="POST">
                     <div class="form-group">
                         <label for="">Username</label>
-                        <input type="text" name="" class="form-control mb-3" id="" required>
+                        <input type="text" name="username" class="form-control mb-3" id="" required>
                     </div>
                     <div class="form-group">
                         <label for="">Password</label>
-                        <input type="text" name="" class="form-control mb-3" id="" required>
+                        <input type="password" name="password" class="form-control mb-3" id="" required>
                     </div>
                     <div class="form-group">
                         <label for="">Role</label>
-                        <select class="form-select mb-3" name="" id="" required>
+                        <select class="form-select mb-3" name="role" id="" required>
                             <option value="" selected disabled>Pilih Role</option>
                             <option value="admin">Admin</option>
                             <option value="pegawai">Pegawai</option>
