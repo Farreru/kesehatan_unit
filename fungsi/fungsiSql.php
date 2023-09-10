@@ -41,3 +41,22 @@ function login($username, $password)
         return false;
     }
 }
+
+function query($query)
+{
+    global $koneksi;
+
+    $result = mysqli_query($koneksi, $query);
+
+    if (!$result) {
+        die("Query failed: " . mysqli_error($koneksi));
+    }
+
+    $data = array(); // Initialize an array to store the results
+
+    while ($row = mysqli_fetch_assoc($result)) {
+        $data[] = $row; // Append each row to the data array
+    }
+
+    return $data; // Return the array of results
+}
