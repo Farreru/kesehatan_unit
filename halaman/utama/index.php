@@ -19,13 +19,15 @@ require('../../fungsi/fungsiSql.php');
 
     <nav class="navbar navbar-expand-lg sticky-top bg-primary navbar-dark">
         <div class="container">
-            <a class="navbar-brand">
+            <a href="../../index.php" class="navbar-brand">
                 Kesehatan Unit
             </a>
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-
                 <li class="nav-item">
-                    <a class="btn bg-white text-primary ms-4">
+                    <a href="../unit/create" class="btn btn-primary me-1">Data Unit</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn bg-white text-primary ">
                         Logout
                     </a>
                 </li>
@@ -40,7 +42,7 @@ require('../../fungsi/fungsiSql.php');
                 <select class="form-select" name="unit" id="">
                     <option value="" selected disabled># Pilih Unit</option>
                     <?php
-                    $data_unit = query("SELECT * FROM unit");
+                    $data_unit = query("SELECT * FROM unit", true);
                     ?>
                     <?php if (!empty($data_unit)) : ?>
                         <?php foreach ($data_unit as $data) : ?>
@@ -49,20 +51,11 @@ require('../../fungsi/fungsiSql.php');
                     <?php endif; ?>
                 </select>
                 <a href="" class="ms-1 btn btn-primary">Tampilkan</a>
-                <a href="../unit/create" class="ms-1 btn btn-primary">+</a>
+
             </div>
 
 
-            <div class="py-2">
-                <table border="1">
-                    <tr>
-                        <th>Unit</th>
-                    </tr>
-                    <tr>
-                        <td>Common</td>
-                    </tr>
-                </table>
-            </div>
+
         </div>
     </div>
 

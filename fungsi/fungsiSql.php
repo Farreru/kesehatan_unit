@@ -42,7 +42,7 @@ function login($username, $password)
     }
 }
 
-function query($query)
+function query($query, $returnData = false)
 {
     global $koneksi;
 
@@ -52,11 +52,16 @@ function query($query)
         die("Query failed: " . mysqli_error($koneksi));
     }
 
-    $data = array(); // Initialize an array to store the results
+    if ($returnData) {
+        $data = array(); // Initialize an array to store the results
 
-    while ($row = mysqli_fetch_assoc($result)) {
-        $data[] = $row; // Append each row to the data array
+        while ($row = mysqli_fetch_assoc($result)) {
+            $data[] = $row; // Append each row to the data array
+        }
+
+        return $data; // Return the array of results
+    } else {
+        // If $returnData is false, just execute the query and return true
+        return true;
     }
-
-    return $data; // Return the array of results
 }

@@ -1,0 +1,92 @@
+<?php
+require('../../fungsi/fungsiSql.php');
+?>
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="../../assets/gambar/logo.png" type="image/x-icon">
+    <!-- Bootstrap CSS -->
+    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../assets/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <link href="../../assets/css/fontawesome.all.min.css" rel="stylesheet" />
+
+    <title>Halaman Utama</title>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg sticky-top bg-primary navbar-dark">
+        <div class="container">
+            <a href="../../index.php" class="navbar-brand">
+                Kesehatan Unit
+            </a>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a href="../unit/create" class="btn btn-primary me-1 active">Data Unit</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn bg-white text-primary ">
+                        Logout
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="p-5">
+            <h5 class='text-muted'>Data Unit.</h5>
+            <table id="table" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>ID.</th>
+                        <th>Nama Unit</th>
+                        <th>Tanggal Dibuat</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <?php
+                    $data_unit = query("SELECT * FROM unit", true);
+                    $index = 1;
+                    ?>
+                    <?php if (!empty($data_unit)) : ?>
+                        <?php foreach ($data_unit as $data) : ?>
+                            <tr>
+                                <td><?= $index++ ?></td>
+                                <td><?= $data['id'] ?></td>
+                                <td><?= $data['nama'] ?></td>
+                                <td><?= $data['tanggal'] ?></td>
+                                <td>
+                                    <a href="edit?id=<?= $data['id'] ?>" class="btn btn-danger btn-sm"><i class="fa-solid fa-pen-to-square"></i></a>
+                                    <a href="delete?id=<?= $data['id'] ?>" class="btn btn-success btn-sm"><i class="fa-solid fa-trash"></i></a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <script src="../../assets/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="../../assets/js/jquery-3.7.0.js"></script>
+    <script src="../../assets/js/jquery.dataTables.min.js"></script>
+    <script src="../../assets/js/dataTables.bootstrap5.min.js"></script>
+
+    <script>
+        window.onload = () => {
+            new DataTable("#table");
+        }
+    </script>
+</body>
+
+</html>
