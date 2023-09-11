@@ -24,19 +24,27 @@ require('../../fungsi/fungsiSql.php');
             <a href="../../index.php" class="navbar-brand">
                 Kesehatan Unit
             </a>
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a href="../pengguna" class="btn btn-primary me-1 ">Data Pengguna</a>
-                </li>
-                <li class="nav-item">
-                    <a href="../unit" class="btn btn-primary me-1 active">Data Unit</a>
-                </li>
-                <li class="nav-item">
-                    <a href="../logout" class="btn bg-white text-primary ">
-                        Logout
-                    </a>
-                </li>
-            </ul>
+            <!-- Add the responsive toggle button here -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <?php if ($_SESSION['user']['role'] == "admin") : ?>
+                        <li class="nav-item">
+                            <a href="../pengguna" class="nav-link">Data Pengguna</a>
+                        </li>
+                    <?php endif; ?>
+                    <li class="nav-item ">
+                        <a href="../unit" class="nav-link active">Data Unit</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../logout" class="btn btn-light ms-1 ">
+                            Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 
@@ -69,7 +77,7 @@ require('../../fungsi/fungsiSql.php');
                                     <td><?= $index++ ?></td>
                                     <td><?= $data['id'] ?></td>
                                     <td><?= $data['nama'] ?></td>
-                                    <td><?= $data['tanggal'] ?></td>
+                                    <td><?= date('d-m-Y', strtotime($data['tanggal'])) ?></td>
                                     <td>
                                         <a href="edit?id=<?= $data['id'] ?>" class="btn btn-danger btn-sm"><i class="fa-solid fa-pen-to-square"></i></a>
                                         <a href="delete?id=<?= $data['id'] ?>" class="btn btn-success btn-sm"><i class="fa-solid fa-trash"></i></a>

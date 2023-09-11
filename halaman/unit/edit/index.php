@@ -19,17 +19,30 @@ require('../../../fungsi/fungsiSql.php');
 
     <nav class="navbar navbar-expand-lg sticky-top bg-primary navbar-dark">
         <div class="container">
-            <a href='../../../index.php' class="navbar-brand">
+            <a href="../../index.php" class="navbar-brand">
                 Kesehatan Unit
             </a>
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-
-                <li class="nav-item">
-                    <a href="../logout" class="btn bg-white text-primary ms-4">
-                        Logout
-                    </a>
-                </li>
-            </ul>
+            <!-- Add the responsive toggle button here -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <?php if ($_SESSION['user']['role'] == "admin") : ?>
+                        <li class="nav-item">
+                            <a href="../pengguna" class="nav-link">Data Pengguna</a>
+                        </li>
+                    <?php endif; ?>
+                    <li class="nav-item ">
+                        <a href="../unit" class="nav-link active">Data Unit</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../logout" class="btn btn-light ms-1 ">
+                            Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 

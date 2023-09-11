@@ -24,21 +24,27 @@ require('../../fungsi/fungsiSql.php');
             <a href="../../index.php" class="navbar-brand">
                 Kesehatan Unit
             </a>
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <?php if ($_SESSION['user']['role'] == "admin") : ?>
+            <!-- Add the responsive toggle button here -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <?php if ($_SESSION['user']['role'] == "admin") : ?>
+                        <li class="nav-item">
+                            <a href="../pengguna" class="nav-link active">Data Pengguna</a>
+                        </li>
+                    <?php endif; ?>
                     <li class="nav-item">
-                        <a href="../pengguna" class="btn btn-primary me-1 active">Data Pengguna</a>
+                        <a href="../unit" class="nav-link">Data Unit</a>
                     </li>
-                <?php endif; ?>
-                <li class="nav-item">
-                    <a href="../unit" class="btn btn-primary me-1 ">Data Unit</a>
-                </li>
-                <li class="nav-item">
-                    <a href="../logout" class="btn bg-white text-primary ">
-                        Logout
-                    </a>
-                </li>
-            </ul>
+                    <li class="nav-item">
+                        <a href="../logout" class="btn btn-light ms-1 ">
+                            Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 
