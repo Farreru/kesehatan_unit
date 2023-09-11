@@ -49,8 +49,12 @@ require('../../../fungsi/fungsiSql.php');
                         <input type="text" placeholder="Nama Unit" name="nama" class="form-control" id="" required>
                     </div>
                     <div class="form-group mb-2">
-                        <label for="">Tanggal</label>
-                        <input type="date" name="tanggal" class="form-control" id="" required>
+                        <label for="tanggal">Tanggal</label>
+                        <?php
+                        $currentDate = date('Y-m-d'); // Get the current date in YYYY-MM-DD format
+                        $formattedDate = date('d-m-Y', strtotime($currentDate)); // Convert to DD-MM-YYYY format
+                        ?>
+                        <input type="date" name="tanggal" class="form-control" id="tanggal" required value="<?= $currentDate ?>">
                     </div>
                     <div class="form-group py-2">
                         <input class="btn btn-primary" type="submit" value="Simpan" name="simpan">

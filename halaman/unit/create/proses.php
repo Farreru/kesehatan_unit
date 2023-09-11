@@ -5,7 +5,7 @@ if (isset($_POST['simpan'])) {
     $tanggal = $_POST['tanggal'];
     query("INSERT into unit(nama, tanggal) VALUES ('$nama','$tanggal')");
     echo "Berhasil Ditambahkan!";
-    echo "<script> setInterval(function() { window.location = '../../utama'; }, 3000); </script>";
+    echo "<script> setInterval(function() { window.location = '../'; }, 3000); </script>";
 } else {
     echo "<script> window.location = 'index.php' </script>";
 }
