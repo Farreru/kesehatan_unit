@@ -16,7 +16,14 @@ require('../../fungsi/fungsiSql.php');
 </head>
 
 <body>
-    <img src="../../assets/gambar/logo.png" width="100px" alt="">
+    <div class="d-flex align-items-center">
+        <img src="../../assets/gambar/logo.png" width="80px" alt="">
+        <div class="ms-2">
+            <h5 class="text-muted mb-1">PT. PLN Nusantara</h5>
+            <span>(Sumatra Utara)</span>
+        </div>
+    </div>
+
     <nav class="navbar navbar-expand-lg sticky-top bg-primary navbar-dark">
         <div class="container">
             <a href="../../index.php" class="navbar-brand">
@@ -50,30 +57,77 @@ require('../../fungsi/fungsiSql.php');
 
     <div class="container">
         <div class="p-5">
-            <h5 class='text-muted'>List Unit.</h5>
-            <div class="d-flex form-group col-sm-3">
-                <select class="form-select" name="unit" id="">
-                    <option value="" selected disabled># Pilih Unit</option>
-                    <?php
-                    $data_unit = query("SELECT * FROM unit", true);
-                    ?>
-                    <?php if (!empty($data_unit)) : ?>
-                        <?php foreach ($data_unit as $data) : ?>
-                            <option value="<?= $data['id'] ?>"><?= $data['nama'] ?></option>
-                        <?php endforeach; ?>
-                    <?php endif; ?>
-                </select>
+            <div class="d-flex">
+                <div class="me-3">
+                    <h5 class='text-muted'>Tahun.</h5>
+                    <div class="form-group">
+                        <select class="form-select form-select-sm" name="" id="">
+                            <option value="" selected disabled># Pilih Tahun</option>
+                            <?php
+                            $data_unit = query("SELECT tahun FROM unit", true);
+                            ?>
+                            <?php if (!empty($data_unit)) : ?>
+                                <?php foreach ($data_unit as $data) : ?>
+                                    <option value="<?= $data['id'] ?>"><?= $data['tahun'] ?></option>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="me-3">
+                    <h5 class='text-muted'>Bulan.</h5>
+                    <div class="form-group">
+                        <select class="form-select form-select-sm" name="" id="">
+                            <option value="" selected disabled># Pilih Bulan</option>
+                            <?php
+                            $data_unit = query("SELECT bulan FROM unit", true);
+                            ?>
+                            <?php if (!empty($data_unit)) : ?>
+                                <?php foreach ($data_unit as $data) : ?>
+                                    <option value="<?= $data['id'] ?>"><?= $data['bulan'] ?></option>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        </select>
+                    </div>
+                </div>
 
+                <div class="me-3">
+                    <h5 class='text-muted'>List Unit.</h5>
+                    <div class="form-group">
+                        <select class="form-select form-select-sm" name="unit" id="">
+                            <option value="" selected disabled># Pilih Unit </option>
+                            <?php
+                            $data_unit = query("SELECT * FROM unit", true);
+                            ?>
+                            <?php if (!empty($data_unit)) : ?>
+                                <?php foreach ($data_unit as $data) : ?>
+                                    <option value="<?= $data['id'] ?>"><?= $data['nama'] ?></option>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        </select>
 
+                    </div>
+                </div>
             </div>
 
-
+            <div class="table-responsive p-1 border-top border-primary mt-2 border-2">
+                <iframe src="table.php" frameborder="0" width="100%" style="min-height: 350px;"></iframe>
+            </div>
 
         </div>
     </div>
 
 
     <script src="../../assets/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="../../assets/js/jquery-3.7.0.js"></script>
+    <script src="../../assets/js/jquery.dataTables.min.js"></script>
+    <script src="../../assets/js/dataTables.bootstrap5.min.js"></script>
+
+    <!-- <script>
+        window.onload = () => {
+            new DataTable("#table");
+        }
+    </script> -->
 </body>
 
 </html>

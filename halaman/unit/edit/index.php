@@ -17,6 +17,14 @@ require('../../../fungsi/fungsiSql.php');
 
 <body>
 
+    <div class="d-flex align-items-center">
+        <img src="../../../assets/gambar/logo.png" width="80px" alt="">
+        <div class="ms-2">
+            <h5 class="text-muted mb-1">PT. PLN Nusantara</h5>
+            <span>(Sumatra Utara)</span>
+        </div>
+    </div>
+
     <nav class="navbar navbar-expand-lg sticky-top bg-primary navbar-dark">
         <div class="container">
             <a href="../../index.php" class="navbar-brand">
@@ -30,14 +38,14 @@ require('../../../fungsi/fungsiSql.php');
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <?php if ($_SESSION['user']['role'] == "admin") : ?>
                         <li class="nav-item">
-                            <a href="../pengguna" class="nav-link">Data Pengguna</a>
+                            <a href="../../pengguna" class="nav-link">Data Pengguna</a>
                         </li>
                     <?php endif; ?>
                     <li class="nav-item ">
-                        <a href="../unit" class="nav-link active">Data Unit</a>
+                        <a href="../../unit" class="nav-link active">Data Unit</a>
                     </li>
                     <li class="nav-item">
-                        <a href="../logout" class="btn btn-light ms-1 ">
+                        <a href="../../logout" class="btn btn-light ms-1 ">
                             Logout
                         </a>
                     </li>

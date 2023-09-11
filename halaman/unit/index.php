@@ -18,6 +18,13 @@ require('../../fungsi/fungsiSql.php');
 </head>
 
 <body>
+    <div class="d-flex align-items-center">
+        <img src="../../assets/gambar/logo.png" width="80px" alt="">
+        <div class="ms-2">
+            <h5 class="text-muted mb-1">PT. PLN Nusantara</h5>
+            <span>(Sumatra Utara)</span>
+        </div>
+    </div>
 
     <nav class="navbar navbar-expand-lg sticky-top bg-primary navbar-dark">
         <div class="container">
