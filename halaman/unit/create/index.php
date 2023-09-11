@@ -23,9 +23,14 @@ require('../../../fungsi/fungsiSql.php');
                 Kesehatan Unit
             </a>
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-
                 <li class="nav-item">
-                    <a class="btn bg-white text-primary ms-4">
+                    <a href="../pengguna" class="btn btn-primary me-1 ">Data Pengguna</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../unit" class="btn btn-primary me-1 active">Data Unit</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../logout" class="btn bg-white text-primary">
                         Logout
                     </a>
                 </li>

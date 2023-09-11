@@ -25,11 +25,13 @@ require('../../fungsi/fungsiSql.php');
                 Kesehatan Unit
             </a>
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <?php if ($_SESSION['user']['role'] == "admin") : ?>
+                    <li class="nav-item">
+                        <a href="../pengguna" class="btn btn-primary me-1 active">Data Pengguna</a>
+                    </li>
+                <?php endif; ?>
                 <li class="nav-item">
-                    <a href="../pengguna" class="btn btn-primary me-1 ">Data Pengguna</a>
-                </li>
-                <li class="nav-item">
-                    <a href="../unit" class="btn btn-primary me-1 active">Data Unit</a>
+                    <a href="../unit" class="btn btn-primary me-1 ">Data Unit</a>
                 </li>
                 <li class="nav-item">
                     <a href="../logout" class="btn bg-white text-primary ">
@@ -42,37 +44,44 @@ require('../../fungsi/fungsiSql.php');
 
     <div class="container">
         <div class="p-5">
-            <div class="d-flex">
-                <h5 class='text-muted'>Data Unit.</h5>
-                <a class=" btn btn-primary btn-sm mb-2 ms-auto" href="create">Tambah Unit</a>
-            </div>
             <div class="table-responsive">
+                <h5 class='text-muted'>Data Pengguna.</h5>
                 <table id="table" class="table table-striped">
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>ID.</th>
-                            <th>Nama Unit</th>
-                            <th>Tanggal Dibuat</th>
+                            <th>Username</th>
+                            <th>Role</th>
+                            <th>Status</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
 
                         <?php
-                        $data_unit = query("SELECT * FROM unit", true);
+                        $data_unit = query("SELECT * FROM users WHERE username != 'admin'", true);
                         $index = 1;
                         ?>
                         <?php if (!empty($data_unit)) : ?>
                             <?php foreach ($data_unit as $data) : ?>
                                 <tr>
                                     <td><?= $index++ ?></td>
-                                    <td><?= $data['id'] ?></td>
-                                    <td><?= $data['nama'] ?></td>
-                                    <td><?= $data['tanggal'] ?></td>
+                                    <td><?= $data['username'] ?></td>
+                                    <td><?= $data['role'] ?></td>
                                     <td>
-                                        <a href="edit?id=<?= $data['id'] ?>" class="btn btn-danger btn-sm"><i class="fa-solid fa-pen-to-square"></i></a>
-                                        <a href="delete?id=<?= $data['id'] ?>" class="btn btn-success btn-sm"><i class="fa-solid fa-trash"></i></a>
+                                        <select id="statusSelect" class="form-select form-select-sm">
+                                            <?php if ($data['status'] == "aktif") : ?>
+                                                <option value="aktif" selected><?= $data['status'] ?></option>
+                                                <option value="nonaktif">nonaktif</option>
+                                            <?php endif; ?>
+                                            <?php if ($data['status'] == "nonaktif") : ?>
+                                                <option value="nonaktif" selected><?= $data['status'] ?></option>
+                                                <option value="aktif">aktif</option>
+                                            <?php endif; ?>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <a href="delete.php?id=<?= $data['id'] ?>" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -81,7 +90,6 @@ require('../../fungsi/fungsiSql.php');
                     </tbody>
                 </table>
             </div>
-
         </div>
     </div>
 
@@ -95,6 +103,21 @@ require('../../fungsi/fungsiSql.php');
         window.onload = () => {
             new DataTable("#table");
         }
+    </script>
+
+    <!-- JavaScript to handle the selection change -->
+    <script>
+        const statusSelect = document.getElementById('statusSelect');
+
+        statusSelect.addEventListener('change', function() {
+            const selectedValue = statusSelect.value;
+            const id = <?= $data['id'] ?>; // Replace with the actual ID from your data
+            if (selectedValue === 'aktif') {
+                window.location.href = `aktivasi.php?id=${id}&status=aktif`;
+            } else if (selectedValue === 'nonaktif') {
+                window.location.href = `aktivasi.php?id=${id}&status=nonaktif`;
+            }
+        });
     </script>
 </body>
 

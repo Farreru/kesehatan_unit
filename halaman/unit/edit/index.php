@@ -25,7 +25,7 @@ require('../../../fungsi/fungsiSql.php');
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
                 <li class="nav-item">
-                    <a class="btn bg-white text-primary ms-4">
+                    <a href="../logout" class="btn bg-white text-primary ms-4">
                         Logout
                     </a>
                 </li>
@@ -35,7 +35,23 @@ require('../../../fungsi/fungsiSql.php');
 
     <div class="container">
         <div class="p-5">
-            <h5 class='text-muted'>Tambahkan Unit Baru.</h5>
+            <?php
+            if (!isset($_GET['id'])) {
+                echo "<script> window.location = '../' </script>";
+                return false;
+            }
+            $id = $_GET['id'];
+            $data = query("SELECT * FROM unit WHERE id = '$id' ", true);
+            // print_r($data);
+            if (empty($data)) {
+                echo "<script> window.location = '../' </script>";
+                return false;
+            }
+            // foreach ($data as $key) {
+            // }
+
+            ?>
+            <h5 class='text-muted'>Ubah Unit ().</h5>
 
             <div class="py-3 col-sm-5">
                 <form action="proses.php" method="POST">
