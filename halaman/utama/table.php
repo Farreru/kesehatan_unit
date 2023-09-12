@@ -1,4 +1,4 @@
-<table border="1">
+<table id="table" border="1" style="border-collapse: collapse;">
     <tr>
         <td rowspan="4"><img src="../../assets/gambar/logo.png" width="80px" alt=""></td>
         <th colspan="8">UNIT INDUK PEMBANGKITAN SUMATERA BAGIAN UTARA</th>
